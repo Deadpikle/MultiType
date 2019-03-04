@@ -102,7 +102,7 @@ namespace MultiType
 			var checkbox = (CheckBox)sender;
 			if (_isSinglePlayer || _isServer)
 			{
-				var completeWindow = new LessonComplete();
+				var completeWindow = new LessonComplete(User1WPM.Content.ToString());
 				if (completeWindow.ShowDialog() == false)
 				{
 					completeWindow.Close();

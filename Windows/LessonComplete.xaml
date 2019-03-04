@@ -3,10 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
         Title="Lesson Complete" Height="150" Width="400"
-        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
-    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button Name="Repeat" Content="Repeat Lesson" Margin="0,0,0,0" Click="Repeat_Click" />
-        <Button Name="SelectNew" Content="Select New Lesson" Margin="10,0,0,0" Click="SelectNew_Click" />
-        <Button Name="Quit" Content="Quit" HorizontalAlignment="Left" Margin="10,0,0,0" Click="Quit_Click" />
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <StackPanel Name="Stats" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <TextBlock FontSize="14">
+                You typed at a rate of <Run Name="RateRun" FontWeight="Bold"></Run>
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="Repeat" Content="Repeat Lesson" Margin="0,0,0,0" Click="Repeat_Click" />
+            <Button Name="SelectNew" Content="Select New Lesson" Margin="10,0,0,0" Click="SelectNew_Click" />
+            <Button Name="Quit" Content="Quit" HorizontalAlignment="Left" Margin="10,0,0,0" Click="Quit_Click" />
+        </StackPanel>
     </StackPanel>
 </mahapps:MetroWindow>

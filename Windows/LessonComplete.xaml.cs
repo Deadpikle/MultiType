@@ -14,9 +14,17 @@ namespace MultiType
 		public LessonComplete()
 		{
 			InitializeComponent();
-		}
+            Stats.Visibility = Visibility.Collapsed;
+        }
 
-	    private void SelectNew_Click(object sender, RoutedEventArgs e)
+        public LessonComplete(string wpm)
+        {
+            InitializeComponent();
+            RateRun.Text = wpm;
+            Stats.Visibility = Visibility.Visible;
+        }
+
+        private void SelectNew_Click(object sender, RoutedEventArgs e)
 	    {
             Result = Miscellaneous.DialogResult.New;
             DialogResult = true;
