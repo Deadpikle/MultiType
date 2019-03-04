@@ -1,15 +1,10 @@
-﻿<Window x:Class="MultiType.MiniLessonSelect"
+﻿<mahapps:MetroWindow x:Class="MultiType.MiniLessonSelect"
         WindowStartupLocation="CenterOwner"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Choose Next Lesson" Height="600" Width="800"
         ResizeMode="NoResize">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <StackPanel Orientation="Vertical">
         <Border Padding="8">
             <StackPanel Orientation="Horizontal">
@@ -25,12 +20,12 @@
                         </TransformGroup>
                     </ComboBox.RenderTransform>
                 </ComboBox>
-                <Button x:Name="Choose" Content="Choose Lesson" HorizontalAlignment="Right" Width="95" Margin="500,0,0,0" 
-                        Click="Choose_Click" Height="22" Style="{DynamicResource RoundedButton}" />
+                <Button x:Name="Choose" Content="Choose Lesson" HorizontalAlignment="Right" Margin="500,0,0,0" 
+                        Click="Choose_Click" Height="22"  />
             </StackPanel>
         </Border>
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="20,54,32,10">
             <TextBlock TextWrapping="Wrap" Text="{Binding LessonString}" />
         </ScrollViewer>
     </StackPanel>
-</Window>
+</mahapps:MetroWindow>

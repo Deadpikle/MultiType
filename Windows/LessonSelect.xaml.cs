@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using MahApps.Metro.Controls;
 using MultiType.ViewModels;
 
 namespace MultiType
@@ -7,7 +8,7 @@ namespace MultiType
 	/// <summary>
 	/// Interaction logic for LessonSelect.xaml
 	/// </summary>
-	public partial class LessonSelect : Window
+	public partial class LessonSelect : MetroWindow
 	{
 		private LessonViewModel _viewModel;
 		private bool _isSinglePlayer;

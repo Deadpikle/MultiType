@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using MahApps.Metro.Controls;
 using MultiType.ViewModels;
 
 namespace MultiType
@@ -7,7 +8,7 @@ namespace MultiType
 	/// Interaction logic for MiniLessonSelect.xaml
 	/// Allows a single player or the host of a multiplayer game to choose a new lesson after completing their current lesson.
 	/// </summary>
-	public partial class MiniLessonSelect : Window
+	public partial class MiniLessonSelect : MetroWindow
 	{
 		public string LessonString { get; set; }
 		private LessonViewModel _viewModel;

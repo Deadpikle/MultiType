@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MahApps.Metro.Controls;
 using MultiType.ViewModels;
 
 namespace MultiType
@@ -9,7 +10,7 @@ namespace MultiType
 	/// <summary>
 	/// Interaction logic for ClientConnect.xaml
 	/// </summary>
-	public partial class ClientConnect : Window
+	public partial class ClientConnect : MetroWindow
 	{
 		ConnectViewModel _viewModel;
 		public ClientConnect()

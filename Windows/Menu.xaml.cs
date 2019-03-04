@@ -1,11 +1,12 @@
-﻿using System.Windows;
+﻿using MahApps.Metro.Controls;
+using System.Windows;
 
 namespace MultiType
 {
 	/// <summary>
 	/// Interaction logic for Menu.xaml
 	/// </summary>
-	public partial class Menu : Window
+	public partial class Menu : MetroWindow
 	{
 		public Menu()
 		{

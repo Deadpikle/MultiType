@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MahApps.Metro.Controls;
+using System.Windows;
 
 namespace MultiType
 {
@@ -6,8 +7,8 @@ namespace MultiType
 	/// <summary>
 	/// Interaction logic for LessonComplete.xaml
 	/// </summary>
-	public partial class LessonComplete : Window
-	{
+	public partial class LessonComplete : MetroWindow
+    {
         internal Miscellaneous.DialogResult Result { get; set; }
 
 		public LessonComplete()
