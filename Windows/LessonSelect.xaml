@@ -53,13 +53,10 @@
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Lesson Name:" Margin="0,0,10,0" Height="25"/>
                     <TextBox Name="LessonNameEdit" Text="{Binding LessonNameEdit, UpdateSourceTrigger=PropertyChanged}"
-                            Margin="0,0,10,0" Width="130" Height="25" VerticalContentAlignment="Center" />
-                    <Button Content="Save" Margin="0,0,10,0" Width="75" Click="SaveEdit_Click"
-                            Height="25" />
-                    <Button Content="Cancel" Margin="0,0,10,0" Width="75" Click="CancelEdit_Click"
-                            Height="25" />
-                    <TextBlock Text="{Binding EditErrorText}" Margin="0,0,10,0" TextWrapping="Wrap"
-                            Height="25"/>
+                            Margin="0,0,10,0" MinWidth="130" VerticalContentAlignment="Center" />
+                    <Button Content="Save" Margin="0,0,10,0" Click="SaveEdit_Click" />
+                    <Button Content="Cancel" Margin="0,0,10,0" Click="CancelEdit_Click"/>
+                    <TextBlock Text="{Binding EditErrorText}" Margin="0,0,10,0" TextWrapping="Wrap"/>
                 </StackPanel>
             </StackPanel>
         </Border>
