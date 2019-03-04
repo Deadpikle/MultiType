@@ -24,8 +24,7 @@
                 <Label Name="RacerSpeed" Content="Racer Speed:" Margin="0,0,5,0" VerticalAlignment="Center"/>
                 <ComboBox Name="RacerSpeeds" Margin="0,0,5,0" ItemsSource="{Binding RacerSpeeds}"
                         SelectedIndex="{Binding RacerIndex}" Width="100" />
-                <Button Name="Choose" Content="Start" Margin="0,0,0,0" Click="Choose_Click"
-                         />
+                <Button Name="Choose" Content="Start" Margin="0,0,0,0" Click="Choose_Click"/>
             </StackPanel>
         </Border>
         <Border x:Name="LessonContent" BorderBrush="LightGray" BorderThickness="2" Padding="10" Visibility="Visible">
@@ -40,13 +39,9 @@
                 </ScrollViewer>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                     <Label Content="Lesson Name:" Margin="0,0,5,0" Height="25"/>
-                    <TextBox Name="LessonName" Margin="0,0,10,0" Width="130" Height="25" Text="{Binding Lesson}" VerticalContentAlignment="Center"/>
-                    <Button Content="Save" Margin="0,0,10,0" Width="75" Click="Save_Click" Height="25" />
-                    <Button Content="Cancel" Margin="0,0,10,0" Width="75" Click="CancelAdd_Click" Height="25"
-                             />
-                    <Border Height="25">
-                        <TextBlock Text="aaaaaa" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" />
-                     </Border>
+                    <TextBox Name="LessonName" Margin="0,0,10,0" Text="{Binding Lesson}" VerticalContentAlignment="Center" MinWidth="100"/>
+                    <Button Content="Save" Margin="0,0,10,0" Click="Save_Click" />
+                    <Button Content="Cancel" Margin="0,0,10,0" Click="CancelAdd_Click"/>
                 </StackPanel>
             </StackPanel>
         </Border>
