@@ -29,7 +29,7 @@
         </Border>
         <Border x:Name="LessonContent" BorderBrush="LightGray" BorderThickness="2" Padding="10" Visibility="Visible">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <TextBlock Text="{Binding LessonString}" TextWrapping="Wrap" />
+                <TextBlock Text="{Binding LessonString}" TextWrapping="Wrap" FontSize="14"/>
             </ScrollViewer>
         </Border>
         <Border Padding="10" Name="LessonEntryGrid" Visibility="Collapsed" BorderBrush="LawnGreen" BorderThickness="2">
