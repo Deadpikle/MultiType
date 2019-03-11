@@ -3,7 +3,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="Connect to a Host" Height="160" Width="290" ResizeMode="CanMinimize">
+        Title="Connect to a Host" Height="160" Width="290" ResizeMode="CanMinimize"
+        TitleCaps="False" GlowBrush="SkyBlue" Icon="pack://application:,,,/Graphics/icons8-keyboard-64-white.ico">
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
             <Label Content="IP Address:"/>

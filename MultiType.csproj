@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>audio-keyboard %281%29.ico</ApplicationIcon>
+    <ApplicationIcon>Graphics\icons8-keyboard-64-white.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
@@ -156,12 +156,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="audio-keyboard.ico" />
+    <Resource Include="Graphics\icons8-keyboard-64.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="audio-keyboard %281%29.ico" />
+    <Resource Include="Graphics\icons8-keyboard-64-white.ico" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

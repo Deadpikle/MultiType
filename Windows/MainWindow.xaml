@@ -6,7 +6,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
         Title="MultiType" Height="650" Width="1000" KeyDown="Window_KeyDown_1" MinWidth="975" MinHeight="500"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        TitleCaps="False" GlowBrush="SkyBlue" Icon="pack://application:,,,/Graphics/icons8-keyboard-64-white.ico">
     <Grid Width="Auto" Height="Auto">
         <Rectangle Fill="#FFF4F4F5" Height="104" Margin="8,10,12,0" Stroke="Black" VerticalAlignment="Top" Panel.ZIndex="-1"/>
         <Grid Name="LocalStatsGrid">

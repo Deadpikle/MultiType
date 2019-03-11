@@ -8,6 +8,7 @@
         xmlns:viewModels="clr-namespace:MultiType.ViewModels"
         mc:Ignorable="d"
         Title="Lesson Selection" Height="600" Width="850" MinWidth="800" MinHeight="550"
+        TitleCaps="False" GlowBrush="SkyBlue" Icon="pack://application:,,,/Graphics/icons8-keyboard-64-white.ico"
         ResizeMode="CanResize" d:DataContext="{d:DesignInstance viewModels:LessonViewModel}">
     <StackPanel Orientation="Vertical">
         <Border Padding="10">
