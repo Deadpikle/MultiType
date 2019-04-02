@@ -174,7 +174,7 @@ namespace MultiType.ViewModels
 			PortNum = "";
 			RacerSpeeds = new string[] { "10 WPM", "20 WPM", "30 WPM", "40 WPM", "50 WPM", "60 WPM", "70 WPM", "80 WPM", 
 				"90 WPM", "100 WPM", "110 WPM", "120 WPM", "130 WPM", "140 WPM", "150 WPM" };
-			RacerIndex = 1;
+			RacerIndex = 0;
 		}
 
 		internal void OpenConnectionPendingPopup()
