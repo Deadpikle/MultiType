@@ -11,6 +11,11 @@
                 You typed at a rate of <Run Name="RateRun" FontWeight="Bold"></Run>
             </TextBlock>
         </StackPanel>
+        <StackPanel Name="UserErrors" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <TextBlock FontSize="14">
+                You finished, but you had <Run Name="ErrorsRun" FontWeight="Bold"></Run> error(s)! Please try again!
+            </TextBlock>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="Repeat" Content="Repeat Lesson" Margin="0,0,0,0" Click="Repeat_Click" />
             <Button Name="SelectNew" Content="Select New Lesson" Margin="10,0,0,0" Click="SelectNew_Click" />

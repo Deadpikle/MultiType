@@ -4,16 +4,16 @@ using System.Windows;
 namespace MultiType
 {
 
-	/// <summary>
-	/// Interaction logic for LessonComplete.xaml
-	/// </summary>
-	public partial class LessonComplete : MetroWindow
+    /// <summary>
+    /// Interaction logic for LessonComplete.xaml
+    /// </summary>
+    public partial class LessonComplete : MetroWindow
     {
         internal Miscellaneous.DialogResult Result { get; set; }
 
-		public LessonComplete()
-		{
-			InitializeComponent();
+        public LessonComplete()
+        {
+            InitializeComponent();
             Stats.Visibility = Visibility.Collapsed;
         }
 
@@ -22,6 +22,24 @@ namespace MultiType
             InitializeComponent();
             RateRun.Text = wpm;
             Stats.Visibility = Visibility.Visible;
+            UserErrors.Visibility = Visibility.Collapsed;
+        }
+
+        public LessonComplete(string wpm, int userErrors)
+        {
+            InitializeComponent();
+            RateRun.Text = wpm;
+            if (userErrors == 0)
+            {
+                Stats.Visibility = Visibility.Visible;
+                UserErrors.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Stats.Visibility = Visibility.Collapsed;
+                UserErrors.Visibility = Visibility.Visible;
+                ErrorsRun.Text = userErrors.ToString();
+            }
         }
 
         private void SelectNew_Click(object sender, RoutedEventArgs e)

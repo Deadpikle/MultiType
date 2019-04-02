@@ -133,6 +133,12 @@ namespace MultiType.ViewModels
                 NotifyPropertyChanged("Errors");
             }
         }
+
+        public int UserErrors
+        {
+            get { return _model._errors; }
+        }
+
         public string LessonString
         {
 			get { return _model._lessonString; }
