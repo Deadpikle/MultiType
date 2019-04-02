@@ -181,7 +181,7 @@ namespace MultiType.Models
 					if (startPointer == null || document.ContentEnd == null) return;
 					var textRange = new TextRange(startPointer, document.ContentEnd);
 					textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Blue);
-					textRange.ApplyPropertyValue(TextElement.BackgroundProperty, Brushes.White);
+					textRange.ApplyPropertyValue(TextElement.BackgroundProperty, Brushes.Transparent);
 					_lastCharError = false; // deactivate the flags
 					_lastCharEdit = false;
 				}
@@ -208,7 +208,18 @@ namespace MultiType.Models
             thread1.Start();
 			var thread2 = new System.Threading.Thread(()=>CalculateCompletionPercentage()); // kick off a new thread to calculate completion percentage
             thread2.Start();
-		}
+
+            var rtb = _viewModel._userInput;
+            var ptr = rtb.Document.ContentStart;
+            while (ptr != null && ptr.GetOffsetToPosition(rtb.Document.ContentEnd) != 0)
+            {
+                //Console.WriteLine("{0} -> {1}", "", ptr.GetCharacterRect(LogicalDirection.Forward).Y);
+                ptr = ptr.GetNextInsertionPosition(LogicalDirection.Forward);
+            }
+            Console.WriteLine("---------");
+
+
+        }
 
 		internal void CalculateCompletionPercentage()
 		{

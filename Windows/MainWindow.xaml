@@ -27,13 +27,20 @@
         </Grid>
         <Grid>
             <ScrollViewer Name="LessonContentScroll" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" Margin="10,125,19,52">
-                <TextBlock Name="LessonContent" FontFamily="Courier New" FontWeight="Bold" FontSize="14" Padding="7.5" HorizontalAlignment="Left" LineHeight="48" TextWrapping="Wrap" VerticalAlignment="Top">
-                <Run Text="{Binding LessonString}"/></TextBlock>
+                <RichTextBox Name="LessonContent" FontFamily="Courier New" FontWeight="Bold" FontSize="14" Padding="0,5,3,10" HorizontalAlignment="Left" VerticalAlignment="Top"
+                             IsReadOnly="True">
+                    <FlowDocument>
+                        <Paragraph LineHeight="48">
+                            <Run Name="TextBlockRun" Text="{Binding LessonString}"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
             </ScrollViewer>
         </Grid>
         <Grid>
             <ScrollViewer  Name="PeerContentScroll" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" Margin="10,154,19,32">
-                <TextBlock Name="OtherUser" Height="1200" Foreground="Green" FontWeight="Bold" Padding="7.5" LineHeight="48" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding PeerTypedContent}" VerticalAlignment="Top"
+                <TextBlock Name="OtherUser" Height="1200" Foreground="Green" FontWeight="Bold" 
+                           Padding="5.5,7.5,7.5,7.5" LineHeight="48" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding PeerTypedContent}" VerticalAlignment="Top"
                    FontFamily="Courier New" FontSize="14"/>
             </ScrollViewer>
         </Grid>

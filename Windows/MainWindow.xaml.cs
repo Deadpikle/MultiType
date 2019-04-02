@@ -30,7 +30,7 @@ namespace MultiType
 			this.DataContext = _viewModel;
 			//_contentLength = 0;
 			UserInput.Focus();
-		}
+        }
 
         internal MainWindow(SocketsAPI.AsyncTcpClient socket, string lessonString, bool isServer = false)
         {
