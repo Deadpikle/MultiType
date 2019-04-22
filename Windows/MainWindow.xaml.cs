@@ -186,5 +186,10 @@ namespace MultiType
         {
             Keyboard.Focus(UserInput);
         }
+
+        private void UserInput_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

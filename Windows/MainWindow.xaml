@@ -28,7 +28,7 @@
         <Grid>
             <ScrollViewer Name="LessonContentScroll" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" Margin="10,125,19,52">
                 <RichTextBox Name="LessonContent" FontFamily="Courier New" FontWeight="Bold" FontSize="14" Padding="0,5,3,10" HorizontalAlignment="Left" VerticalAlignment="Top"
-                             IsReadOnly="True" BorderBrush="Transparent">
+                             IsReadOnly="True" BorderBrush="Transparent" Focusable="False" AllowDrop="False">
                     <FlowDocument>
                         <Paragraph LineHeight="48">
                             <Run Name="TextBlockRun" Text="{Binding LessonString}"/>
@@ -48,7 +48,7 @@
             <ScrollViewer Name="RTBScroll" Margin="10,130,19,42" VerticalScrollBarVisibility="Hidden" ScrollChanged="RTBScroll_ScrollChanged">
                 <RichTextBox Name="UserInput" HorizontalAlignment="Left" Background="Transparent" Padding="0,15,3,10" VerticalAlignment="Top" IsReadOnly="{Binding RTBReadOnly}" 
                     TextChanged="UserInput_TextChanged" AcceptsReturn="False" FontFamily="Courier New" FontWeight="Bold" FontSize="14" BorderBrush="Transparent"
-                             LostKeyboardFocus="UserInput_LostKeyboardFocus">
+                             LostKeyboardFocus="UserInput_LostKeyboardFocus" AllowDrop="False" PreviewMouseDown="UserInput_PreviewMouseDown">
                     <FlowDocument>
                         <Paragraph Foreground="Blue" LineHeight="48"></Paragraph>
                     </FlowDocument>
