@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -47,6 +48,7 @@ namespace MultiType
 			OpenStartGameDialog();
 		}
 
+        private bool aaa = false;
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Pause)
@@ -56,13 +58,13 @@ namespace MultiType
 		private void UserInput_TextChanged(object sender, TextChangedEventArgs e)
         {
 			var content = new TextRange(UserInput.Document.ContentStart, UserInput.Document.ContentEnd).Text;
-			if (_contentLength == content.Length) return;
-			_contentLength = content.Length;
-			if (content.Length < 2) return;
-			content = content.Substring(0, content.Length - 2);
-            if (_viewModel == null)
+			if (_contentLength == content.Length)
                 return;
-			_viewModel.CharacterTyped(content);
+			_contentLength = content.Length;
+			if (content.Length < 2)
+                return;
+			content = content.Substring(0, content.Length - 2);
+			_viewModel?.CharacterTyped(content);
         }
 		
 		private void RTBScroll_ScrollChanged(object sender, ScrollChangedEventArgs e)
@@ -70,7 +72,6 @@ namespace MultiType
 			var scroller = (ScrollViewer)sender;
 			scroller.ScrollToBottom();
 			var offset = scroller.VerticalOffset;
-			var blah = OtherUser;
 			PeerContentScroll.ScrollToVerticalOffset(offset);
 			LessonContentScroll.ScrollToVerticalOffset(offset);
 		}
@@ -181,5 +182,10 @@ namespace MultiType
 			UserInput.Document.Blocks.Add(paragraph);
 			checkbox.IsChecked = false;
 		}
+
+        private void UserInput_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Keyboard.Focus(UserInput);
+        }
     }
 }

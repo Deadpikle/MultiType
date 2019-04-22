@@ -216,9 +216,6 @@ namespace MultiType.Models
                 //Console.WriteLine("{0} -> {1}", "", ptr.GetCharacterRect(LogicalDirection.Forward).Y);
                 ptr = ptr.GetNextInsertionPosition(LogicalDirection.Forward);
             }
-            Console.WriteLine("---------");
-
-
         }
 
 		internal void CalculateCompletionPercentage()
