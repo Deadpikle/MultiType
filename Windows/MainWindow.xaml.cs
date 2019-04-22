@@ -26,7 +26,7 @@ namespace MultiType
 			//adjust the placement of the local stats grid to account for a single player
 			LocalStatsGrid.Margin = new Thickness(LocalStatsGrid.Margin.Left, LocalStatsGrid.Margin.Top+20,
 				LocalStatsGrid.Margin.Right, LocalStatsGrid.Margin.Bottom);
-			_viewModel = new PrimaryViewModel(lessonString, UserInput, racerSpeed:racerSpeed);
+			_viewModel = new PrimaryViewModel(lessonString, UserInput, LessonContent, racerSpeed: racerSpeed);
 			_isSinglePlayer = true;
 			this.DataContext = _viewModel;
 			//_contentLength = 0;
@@ -36,7 +36,7 @@ namespace MultiType
         internal MainWindow(SocketsAPI.AsyncTcpClient socket, string lessonString, bool isServer = false)
         {
 			InitializeComponent();
-			this.DataContext = new PrimaryViewModel(lessonString, UserInput, socket, isServer );
+			this.DataContext = new PrimaryViewModel(lessonString, UserInput, LessonContent, socket, isServer );
 			_viewModel = (PrimaryViewModel)DataContext;
 			_isSinglePlayer = false;
 			ChangeLesson.Visibility = Visibility.Collapsed;
@@ -48,7 +48,6 @@ namespace MultiType
 			OpenStartGameDialog();
 		}
 
-        private bool aaa = false;
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Pause)

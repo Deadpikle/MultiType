@@ -201,8 +201,28 @@ namespace MultiType.Models
 					_errors = 0;
 				_viewModel.Errors = _errors.ToString();
 				_lastCharEdit = true; // set flag to indicate that text has been deleted
-			}
-			_previousContentLength = _typedContent.Length;  //update the value for the next round
+            }
+            // highlight current letter to type in lesson string
+            try
+            {
+                var lessonDocument = _viewModel._lessonInput.Document;
+                var fullRange = new TextRange(lessonDocument.ContentStart, lessonDocument.ContentEnd);
+                fullRange.ClearAllProperties();
+                fullRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Black);
+                var start = lessonDocument.ContentStart.GetPositionAtOffset(_typedContent.Length + 2, LogicalDirection.Forward);
+                var end = lessonDocument.ContentStart.GetPositionAtOffset(_typedContent.Length + 1 + 2, LogicalDirection.Forward);
+                if (start != null && end != null)
+                {
+                    var nextTypingRange = new TextRange(start, end);
+                    if (nextTypingRange != null)
+                    {
+                        nextTypingRange.ApplyPropertyValue(TextElement.BackgroundProperty, Brushes.LightBlue);
+                    }
+                }
+            }
+            catch {} // just for safety...
+            //
+            _previousContentLength = _typedContent.Length;  //update the value for the next round
 			_previousTypedContent = _typedContent; // transfer the current typed content into a state variable for possible use in the next call to this method
 			var thread1 = new System.Threading.Thread(()=>CalculateAccuracy()); // kick off a new thread to calculate accuracy
             thread1.Start();

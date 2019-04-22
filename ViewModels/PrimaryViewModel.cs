@@ -22,7 +22,8 @@ namespace MultiType.ViewModels
 
 		private PrimaryModel _model;
 		internal RichTextBox _userInput;
-		private string _popupText;
+        internal RichTextBox _lessonInput;
+        private string _popupText;
 		private bool _showPopup;
 		private string _popupCountdown;
 		internal bool gameHasStarted;
@@ -31,12 +32,13 @@ namespace MultiType.ViewModels
 		private bool _gameComplete;
 		private bool _isServer;
 		private bool _clearRtb;
+        private bool _didSetLessonString = false;
 
-		#endregion
+        #endregion
 
-		#region Local Properties
+        #region Local Properties
 
-		public bool ClearRTB 
+        public bool ClearRTB 
 		{ 
 			get{return _clearRtb;}
 			set
@@ -144,6 +146,12 @@ namespace MultiType.ViewModels
 			get { return _model._lessonString; }
             set
             {
+                // only set the lesson string once. this lets us highlight the next letter to type
+                // without messing with the bindings/setup. I realize this is ugly, but
+                // no time for a full rewrite/cleanup of this screen...
+                if (_didSetLessonString)
+                    return;
+                _didSetLessonString = true;
 				_model._lessonString = value;
                 _model._adjustedLessonString = value.TrimEnd();
                 _model._lessonLength = _model._adjustedLessonString.Length;
@@ -234,7 +242,8 @@ namespace MultiType.ViewModels
 
 		#endregion
 
-        public PrimaryViewModel(string lessonString, RichTextBox userInput, SocketsAPI.AsyncTcpClient socket=null, bool isServer=false, int racerSpeed=0)
+        public PrimaryViewModel(string lessonString, RichTextBox userInput, RichTextBox lessonInput, 
+            SocketsAPI.AsyncTcpClient socket=null, bool isServer=false, int racerSpeed=0)
         {
 			if (socket == null)
 			{
@@ -247,7 +256,8 @@ namespace MultiType.ViewModels
 			_isServer = isServer;
 			_isMulti = socket != null;
 			_userInput = userInput;
-			InitiallizeViewModel(lessonString);
+            _lessonInput = lessonInput;
+            InitiallizeViewModel(lessonString);
 		}
 
 		/// <summary>
