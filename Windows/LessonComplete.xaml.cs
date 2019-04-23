@@ -29,7 +29,7 @@ namespace MultiType
         {
             InitializeComponent();
             RateRun.Text = wpm;
-            if (userErrors == 0)
+            if (userErrors < 2) // allow one error
             {
                 Stats.Visibility = Visibility.Visible;
                 UserErrors.Visibility = Visibility.Collapsed;
