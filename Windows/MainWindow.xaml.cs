@@ -191,5 +191,25 @@ namespace MultiType
         {
             e.Handled = true;
         }
+
+        // http://www.devx.com/dotnet/Article/34644
+        protected void BlockCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = false;
+            e.Handled = true;
+        }
+
+        private void UserInput_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Up ||
+                e.Key == Key.Down ||
+                e.Key == Key.Left ||
+                e.Key == Key.Right ||
+                e.Key == Key.Tab ||
+                e.Key == Key.OemBackTab)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

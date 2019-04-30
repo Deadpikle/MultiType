@@ -48,10 +48,50 @@
             <ScrollViewer Name="RTBScroll" Margin="10,130,19,42" VerticalScrollBarVisibility="Hidden" ScrollChanged="RTBScroll_ScrollChanged">
                 <RichTextBox Name="UserInput" HorizontalAlignment="Left" Background="Transparent" Padding="0,15,3,10" VerticalAlignment="Top" IsReadOnly="{Binding RTBReadOnly}" 
                     TextChanged="UserInput_TextChanged" AcceptsReturn="False" FontFamily="Courier New" FontWeight="Bold" FontSize="14" BorderBrush="Transparent"
-                             LostKeyboardFocus="UserInput_LostKeyboardFocus" AllowDrop="False" PreviewMouseDown="UserInput_PreviewMouseDown">
+                             LostKeyboardFocus="UserInput_LostKeyboardFocus" AllowDrop="False" PreviewMouseDown="UserInput_PreviewMouseDown"
+                             PreviewKeyDown="UserInput_PreviewKeyDown">
                     <FlowDocument>
                         <Paragraph Foreground="Blue" LineHeight="48"></Paragraph>
                     </FlowDocument>
+                    <RichTextBox.CommandBindings>
+                        <CommandBinding Command="EditingCommands.ToggleBold" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.ToggleItalic" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.ToggleUnderline" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.ToggleSubscript" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.ToggleSuperscript" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.ToggleBullets" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.ToggleNumbering" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.IncreaseIndentation" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.EnterLineBreak" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.MoveUpByPage" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.MoveDownByPage" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.MoveToLineStart" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.MoveToLineEnd" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.SelectRightByCharacter" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.SelectLeftByCharacter" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.MoveDownByLine" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.MoveUpByLine" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.AlignLeft" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.AlignCenter" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.AlignRight" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.AlignJustify" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.SelectLeftByWord" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.SelectRightByWord" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.EnterParagraphBreak" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.EnterLineBreak" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.TabBackward" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="EditingCommands.TabForward" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.Cut" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.Copy" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.Paste" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.SelectAll" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.Replace" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.Find" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.Save" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.Properties" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.Print" CanExecute="BlockCommand"/>
+                        <CommandBinding Command="ApplicationCommands.ContextMenu" CanExecute="BlockCommand"/>
+                    </RichTextBox.CommandBindings>
                 </RichTextBox>
             </ScrollViewer>
         </Grid>
