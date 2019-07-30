@@ -277,8 +277,8 @@ namespace MultiType.ViewModels
                 {
                     _model.SendNewLessonCommand(lessonString);
                 }
-			}
-			InitiallizeViewModel(lessonString);
+            }
+            InitiallizeViewModel(lessonString);
 		}
 
 		/// <summary>
@@ -300,7 +300,8 @@ namespace MultiType.ViewModels
 			// Initiallize data bound properties.
 			GameComplete = false;
 			gameHasStarted = false;
-			LessonString = lessonString;
+            _didSetLessonString = false;
+            LessonString = lessonString;
 			CharactersTyped = "0";
 			Accuracy = "0/0 = 0%";
 			TimeElapsed = "";

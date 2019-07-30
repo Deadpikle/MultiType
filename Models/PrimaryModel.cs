@@ -97,7 +97,7 @@ namespace MultiType.Models
 					var read = _socket.readData;
                     if (read != null)
                     {
-                        Console.WriteLine("GOt some data, {0}", read.IsLessonText);
+                        Console.WriteLine("Got some data, {0}", read.IsLessonText);
                         if (read.IsLessonText)
                         {
                             _viewModel.LessonString = ((LessonText)read).Lesson;
