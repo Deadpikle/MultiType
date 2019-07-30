@@ -134,20 +134,17 @@ namespace MultiType.SocketsAPI
 				else if (command.IsResetCommand && command.ResetIsNewLesson)
 				{
 					//_model.SendStatsPacket();
-                    Console.WriteLine("Got reset and is NEW lesson command -- {0}", command.LessonText);
                     // clear the lesson string and wait until the new lesson string is received from the server
                     _viewModel.NewLesson(command.LessonText, isLocalCall:false);
 				}
 				else if (command.IsResetCommand && command.ResetIsRepeatedLesson)
 				{
                     //_model.SendStatsPacket();
-                    Console.WriteLine("Got reset and is repeated lesson command");
 					_viewModel.RepeatLesson(isLocalCall:false);
 				}
 			}
             else if (packet.IsStatus)
             {
-                Console.WriteLine("Got status. Received? {0}", ((Status)packet).GotLessonText);
                 if (!((Status)packet).GotLessonText)
                 {
                     _model.SendLessonText(_model._lessonString);

@@ -68,8 +68,6 @@ namespace MultiType
 			if (content.Length < 2)
                 return;
 			content = content.Substring(0, content.Length - 2);
-            //Console.WriteLine("Content is {0} vs {1} and {2} and {3} and {4}", content, new TextRange(LessonContent.Document.ContentStart, LessonContent.Document.ContentEnd).Text,
-            //    LessonContent.Document.Blocks.Count, ((Paragraph)LessonContent.Document.Blocks.FirstBlock).Inlines.Count, XamlWriter.Save(LessonContent.Document));
 			_viewModel?.CharacterTyped(content);
         }
 		

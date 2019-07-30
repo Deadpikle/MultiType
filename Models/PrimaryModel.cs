@@ -254,7 +254,6 @@ namespace MultiType.Models
             var ptr = rtb.Document.ContentStart;
             while (ptr != null && ptr.GetOffsetToPosition(rtb.Document.ContentEnd) != 0)
             {
-                //Console.WriteLine("{0} -> {1}", "", ptr.GetCharacterRect(LogicalDirection.Forward).Y);
                 ptr = ptr.GetNextInsertionPosition(LogicalDirection.Forward);
             }
         }
@@ -517,7 +516,6 @@ namespace MultiType.Models
                      IsUserStatictics = false,
                      Lesson = _lessonString
                  };
-            Console.WriteLine("Sent lesson text: " + _lessonString);
             _socket.Write(lessonText);
         }
 

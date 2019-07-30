@@ -320,16 +320,13 @@ namespace MultiType.ViewModels
 		private void InitiallizeViewModel(string lessonString, bool isReinitialization=false)
 		{
             // Initiallize data bound properties
-            Console.WriteLine("Initializing PrimaryViewModel with lessonString = {0} -- reinit = {1}", lessonString, isReinitialization);
 			GameComplete = false;
 			gameHasStarted = false;
             _didSetLessonString = false;
-            Console.WriteLine("Before LessonString initialized to {0}", LessonString);
 
             SetLessonInput(lessonString);
 
             LessonString = lessonString;
-            Console.WriteLine("AFter LessonString initialized to {0}", LessonString);
 			CharactersTyped = "0";
 			Accuracy = "0/0 = 0%";
 			TimeElapsed = "";
