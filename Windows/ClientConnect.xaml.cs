@@ -78,5 +78,14 @@ namespace MultiType
 			if (((TextBox)sender).Text.Length >= 5)
 				e.Handled = true;
 		}
-	}
+
+        private void Port_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (_viewModel == null) return;
+                _viewModel.ConnectToServer();
+            }
+        }
+    }
 }

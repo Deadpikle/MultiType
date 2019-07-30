@@ -67,6 +67,7 @@ namespace MultiType
 			if (content.Length < 2)
                 return;
 			content = content.Substring(0, content.Length - 2);
+            Console.WriteLine("Content is {0}", content);
 			_viewModel?.CharacterTyped(content);
         }
 		
@@ -127,7 +128,7 @@ namespace MultiType
 					if (window.ShowDialog() == true)
 					{
 						var lessonString = window.LessonString;
-						_viewModel.NewLesson(lessonString);
+						_viewModel.NewLesson(lessonString); // TODO: here is where you _could_ send lesson title too
 						OpenStartGameDialog();
 					}
 					else

@@ -25,7 +25,7 @@
                         Click="Choose_Click" />
             </StackPanel>
         </Border>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="20,54,32,10">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="20,5,32,10">
             <TextBlock TextWrapping="Wrap" Text="{Binding LessonString}" FontSize="14"/>
         </ScrollViewer>
     </StackPanel>
