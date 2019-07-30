@@ -105,9 +105,9 @@ namespace MultiType
 		private void GameComplete_Checked(object sender, RoutedEventArgs e)
 		{
 			var checkbox = (CheckBox)sender;
+            var model = new LessonCompleteModel(User1WPM.Content.ToString(), _viewModel.UserErrors, LessonTitle);
 			if (_isSinglePlayer || _isServer)
 			{
-                var model = new LessonCompleteModel(User1WPM.Content.ToString(), _viewModel.UserErrors, LessonTitle);
                 var completeWindow = new LessonComplete(model);
 				if (completeWindow.ShowDialog() == false)
 				{
@@ -146,7 +146,18 @@ namespace MultiType
 			else
 			{
 				_viewModel.ShowPopup = true;
-				_viewModel.StaticPopupText = "Waiting for the host to select a lesson and start a new game...";
+                string text = "Waiting for the host to select a lesson and start a new game...";
+                if (model.DidSucceed)
+                {
+                    text += string.Format("\n(You got {0} and were {1})", User1WPM.Content, _viewModel.CompletionPercentage.ToLower());
+                }
+                else
+                {
+                    text += string.Format("\n(You got {0}, had {1} error{2}, and were {3})", User1WPM.Content, _viewModel.UserErrors,
+                        _viewModel.UserErrors == 1 ? "" : "s", _viewModel.CompletionPercentage.ToLower());
+                }
+
+                _viewModel.StaticPopupText = text;
                 return;
 			}
 		}
