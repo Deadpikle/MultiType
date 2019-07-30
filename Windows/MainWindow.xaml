@@ -31,7 +31,7 @@
                              IsReadOnly="True" BorderBrush="Transparent" Focusable="False" AllowDrop="False">
                     <FlowDocument>
                         <Paragraph LineHeight="48">
-                            <Run Name="TextBlockRun" Text="{Binding LessonString}"/>
+                            <Run Text="{Binding LessonString}"/>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>

@@ -101,8 +101,8 @@ namespace MultiType.Models
                         if (read.IsLessonText)
                         {
                             _viewModel.LessonString = ((LessonText)read).Lesson;
-                            Console.WriteLine("{0} vs {1}", _viewModel.LessonString, !string.IsNullOrWhiteSpace(_viewModel.LessonString));
-                            Console.WriteLine("Length is now {0}", _lessonLength);
+
+                            _viewModel.SetLessonInput(_viewModel.LessonString);
                             _socket.Write(new Status()
                             {
                                 GotLessonText = !string.IsNullOrWhiteSpace(_viewModel.LessonString),

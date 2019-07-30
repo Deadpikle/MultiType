@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using MultiType.Models;
 
 namespace MultiType.ViewModels
@@ -155,9 +156,8 @@ namespace MultiType.ViewModels
                 {
                     _didSetLessonString = true;
                 }
-                _model._lessonString = value;
-                Console.WriteLine("LessonString = {0} (_model._lessonString is {1})", value, _model._lessonString);
-                _model._adjustedLessonString = value.TrimEnd();
+                _model._lessonString = value != null ? value.TrimEnd() : "";
+                _model._adjustedLessonString = value != null ? value.TrimEnd() : "";
                 _model._lessonLength = _model._adjustedLessonString.Length;
                 NotifyPropertyChanged("LessonString");
             }
@@ -294,6 +294,28 @@ namespace MultiType.ViewModels
 			}
 			InitiallizeViewModel(LessonString, isReinitialization:true);
 		}
+   
+        /**
+         * This is _horrifically_ ugly and ruins the binding for LessonString.
+         * HOWEVER.
+         * There was a VERY strange bug in multiplayer where text would somehow get outside the bindable run (maybe due to the letter highlighting 
+         * messing with the run?!???) and then show up on the other user's lesson. It didn't affect the lesson they had to type, but was a very annoying
+         * visible bug.
+         * To "fix" it we just kill the whole lesson FlowDocument and remake it. EWWWWW.
+         */
+        public void SetLessonInput(string input)
+        {
+            _lessonInput.Dispatcher.Invoke(() =>
+            {
+                var run = new Run(input);
+                var lessonDocument = _lessonInput.Document;
+                _lessonInput.Document.Blocks.Clear();
+                _lessonInput.Document.Blocks.Add(new Paragraph(run)
+                {
+                    LineHeight = 48,
+                });
+            });
+        }
 
 		private void InitiallizeViewModel(string lessonString, bool isReinitialization=false)
 		{
@@ -303,6 +325,9 @@ namespace MultiType.ViewModels
 			gameHasStarted = false;
             _didSetLessonString = false;
             Console.WriteLine("Before LessonString initialized to {0}", LessonString);
+
+            SetLessonInput(lessonString);
+
             LessonString = lessonString;
             Console.WriteLine("AFter LessonString initialized to {0}", LessonString);
 			CharactersTyped = "0";
