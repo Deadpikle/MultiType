@@ -40,7 +40,7 @@
                 </ScrollViewer>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
                     <Label Content="Lesson Name:" Margin="0,0,5,0" Height="25"/>
-                    <TextBox Name="LessonName" Margin="0,0,10,0" Text="{Binding Lesson}" VerticalContentAlignment="Center" MinWidth="100"/>
+                    <TextBox Name="LessonName" Margin="0,0,10,0" Text="{Binding LessonName}" VerticalContentAlignment="Center" MinWidth="100"/>
                     <Button Content="Save" Margin="0,0,10,0" Click="Save_Click" />
                     <Button Content="Cancel" Margin="0,0,10,0" Click="CancelAdd_Click"/>
                 </StackPanel>
