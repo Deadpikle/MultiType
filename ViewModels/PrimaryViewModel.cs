@@ -151,8 +151,12 @@ namespace MultiType.ViewModels
                 // no time for a full rewrite/cleanup of this screen...
                 if (_didSetLessonString)
                     return;
-                _didSetLessonString = true;
-				_model._lessonString = value;
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    _didSetLessonString = true;
+                }
+                _model._lessonString = value;
+                Console.WriteLine("Got lesson of {0} (_model._lessonString is {1})", value, _model._lessonString);
                 _model._adjustedLessonString = value.TrimEnd();
                 _model._lessonLength = _model._adjustedLessonString.Length;
                 NotifyPropertyChanged("LessonString");

@@ -40,7 +40,8 @@ namespace MultiType.SocketsAPI
 		public bool IsLessonText;
 		public bool IsUserStatictics;
 		public bool IsCommand;
-	}
+        public bool IsStatus;
+    }
 
 	[Serializable]
 	public class LessonText: SerializeBase
@@ -70,6 +71,12 @@ namespace MultiType.SocketsAPI
 		public bool ResetIsNewLesson;
 		public bool ResetIsRepeatedLesson;
         public string LessonText;
-	}
+    }
 
-	}
+    [Serializable]
+    public class Status : SerializeBase
+    {
+        public bool GotLessonText;
+    }
+
+}

@@ -95,8 +95,29 @@ namespace MultiType.Models
 				while (_lessonLength == 0)
 				{
 					var read = _socket.readData;
-					if(read != null && read.IsLessonText)
-						_viewModel.LessonString = ((LessonText)read).Lesson;
+                    if (read != null)
+                    {
+                        Console.WriteLine("GOt some data, {0}", read.IsLessonText);
+                        if (read.IsLessonText)
+                        {
+                            _viewModel.LessonString = ((LessonText)read).Lesson;
+                            Console.WriteLine("~~~~ Lesson is now {0}", _viewModel.LessonString);
+                            _socket.Write(new Status()
+                            {
+                                GotLessonText = !string.IsNullOrWhiteSpace(_viewModel.LessonString),
+                                IsStatus = true
+                            });
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Read is null");
+                        _socket.Write(new Status()
+                        {
+                            GotLessonText = false,
+                            IsStatus = true
+                        });
+                    }
 				}
 			}
 		}
@@ -496,6 +517,7 @@ namespace MultiType.Models
                      IsUserStatictics = false,
                      Lesson = _lessonString
                  };
+            Console.WriteLine("Sent lesson text: " + _lessonString);
             _socket.Write(lessonText);
         }
 
