@@ -43,7 +43,7 @@ namespace MultiType.SocketsAPI
         /// Writes an array of bytes to the network.
         /// </summary>
         /// <param name="bytes">The array to write</param>
-        internal  void Write(byte[] bytes)
+        internal void Write(byte[] bytes)
         {
 			if (_tcpClient.Client.Connected == false) return;
             NetworkStream networkStream = _tcpClient.GetStream();
@@ -107,14 +107,18 @@ namespace MultiType.SocketsAPI
 		private void ReadPacket(SerializeBase packet)
 		{
 			if (packet.IsUserStatictics)
-			{ // use the data contained in the stats packet to update the peer databound properties in the view model
+			{ // use the data contained in the stats packet to update the peer databound properties in the view mode
+                Console.WriteLine("Got stats packet");
 				var stats = (UserStatistics)packet;
-				_viewModel.PeerCompletionPercentage = stats.CompletionPercentage;
-				_viewModel.PeerTypedContent = stats.TypedContent;
-				_viewModel.PeerCharactersTyped = stats.CharactersTyped.ToString();
-				_viewModel.PeerAccuracy = stats.Accuracy;
-				_viewModel.PeerErrors = stats.Errors.ToString();
-				_viewModel.PeerWPM = stats.WPM.ToString();
+                if (!_viewModel.GameComplete)
+                {
+                    _viewModel.PeerCompletionPercentage = stats.CompletionPercentage;
+                    _viewModel.PeerTypedContent = stats.TypedContent;
+                    _viewModel.PeerCharactersTyped = stats.CharactersTyped.ToString();
+                    _viewModel.PeerAccuracy = stats.Accuracy;
+                    _viewModel.PeerErrors = stats.Errors.ToString();
+                    _viewModel.PeerWPM = stats.WPM.ToString();
+                }
 			}
 			else if (packet.IsCommand)
 			{
@@ -131,12 +135,14 @@ namespace MultiType.SocketsAPI
 				else if (command.IsResetCommand && command.ResetIsNewLesson)
 				{
 					//_model.SendStatsPacket();
-					// clear the lesson string and wait until the new lesson string is received from the server
-					_viewModel.NewLesson(command.LessonText, isLocalCall:false);
+                    Console.WriteLine("Got reset and is NEW lesson command -- {0}", command.LessonText);
+                    // clear the lesson string and wait until the new lesson string is received from the server
+                    _viewModel.NewLesson(command.LessonText, isLocalCall:false);
 				}
 				else if (command.IsResetCommand && command.ResetIsRepeatedLesson)
 				{
-					//_model.SendStatsPacket();
+                    //_model.SendStatsPacket();
+                    Console.WriteLine("Got reset and is repeated lesson command");
 					_viewModel.RepeatLesson(isLocalCall:false);
 				}
 			}

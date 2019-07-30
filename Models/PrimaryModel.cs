@@ -72,6 +72,16 @@ namespace MultiType.Models
 			_lastCharEdit = false;
 			_totalErrors = 0;
 			_previousTypedContent = "";
+            if (_viewModel._lessonInput != null)
+            {/*
+                _viewModel._lessonInput.Dispatcher.Invoke(() =>
+                {
+                    var lessonDocument = _viewModel._lessonInput.Document;
+                    var fullRange = new TextRange(lessonDocument.ContentStart, lessonDocument.ContentEnd);
+                    fullRange.ClearAllProperties();
+                    //fullRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Black);
+                });*/
+            }
             if (!_isMulti)
 			{ // set up the racer for single player games
 				_currentRacerIndex = 0;
@@ -82,10 +92,11 @@ namespace MultiType.Models
 				_timer.Interval = millisecondsPerChar;
 			}
 			else if (_isServer)
-			{ // if this is the server, transmit the lesson text to the client
+            {
+              // start asynchronous read operations on the tcp socket
+                _socket.BeginReading();
+                // if this is the server, transmit the lesson text to the client
                 SendLessonText(_lessonString);
-				// start asynchronous read operations on the tcp socket
-				_socket.BeginReading();
 			}
 			else if(!isReinitialize)
 			{ // If this is the client and this is a fresh game (no lessons have been completed yet
@@ -97,11 +108,11 @@ namespace MultiType.Models
 					var read = _socket.readData;
                     if (read != null)
                     {
-                        Console.WriteLine("Got some data, {0}", read.IsLessonText);
                         if (read.IsLessonText)
                         {
                             _viewModel.LessonString = ((LessonText)read).Lesson;
-                            Console.WriteLine("~~~~ Lesson is now {0}", _viewModel.LessonString);
+                            Console.WriteLine("{0} vs {1}", _viewModel.LessonString, !string.IsNullOrWhiteSpace(_viewModel.LessonString));
+                            Console.WriteLine("Length is now {0}", _lessonLength);
                             _socket.Write(new Status()
                             {
                                 GotLessonText = !string.IsNullOrWhiteSpace(_viewModel.LessonString),
@@ -111,7 +122,6 @@ namespace MultiType.Models
                     }
                     else
                     {
-                        Console.WriteLine("Read is null");
                         _socket.Write(new Status()
                         {
                             GotLessonText = false,
@@ -132,7 +142,7 @@ namespace MultiType.Models
 				_racerTimer.Stop();
 				return;
 			}
-			// append  the next character in the lesson to the racer textblock and advance the racer's position
+			// append the next character in the lesson to the racer textblock and advance the racer's position
 			_viewModel.PeerTypedContent += _viewModel.LessonString[_currentRacerIndex];
 			_currentRacerIndex++;
 		}
@@ -142,7 +152,8 @@ namespace MultiType.Models
 		/// </summary>
 		private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-			// calculate elapsed time using milliseconds from the stopwatch
+            // calculate elapsed time using milliseconds from the stopwatch
+            Console.WriteLine("On timed event");
 			var milliseconds = _stopwatch.ElapsedMilliseconds;
             var seconds = milliseconds / 1000;
             var minutes = seconds / 60;
@@ -399,6 +410,7 @@ namespace MultiType.Models
 			_viewModel.StaticPopupText = "";
 			_viewModel.PopupCountdown = "";
 			_stopwatch.Start();
+            Console.WriteLine("Started timer");
 			_timer.Start();
 			_viewModel.gameHasStarted = true;
 			_viewModel.RTBReadOnly = false;
@@ -424,7 +436,8 @@ namespace MultiType.Models
 				WPM = _WPM
 			};
 			var packet = Serializer.SerializeToByteArray(StatsSnapshot);
-			_socket.Write(packet);
+            Console.WriteLine("Sending stats packet");
+            _socket.Write(packet);
 		}
 
 		/// <summary>

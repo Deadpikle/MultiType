@@ -156,7 +156,7 @@ namespace MultiType.ViewModels
                     _didSetLessonString = true;
                 }
                 _model._lessonString = value;
-                Console.WriteLine("Got lesson of {0} (_model._lessonString is {1})", value, _model._lessonString);
+                Console.WriteLine("LessonString = {0} (_model._lessonString is {1})", value, _model._lessonString);
                 _model._adjustedLessonString = value.TrimEnd();
                 _model._lessonLength = _model._adjustedLessonString.Length;
                 NotifyPropertyChanged("LessonString");
@@ -278,7 +278,7 @@ namespace MultiType.ViewModels
                     _model.SendNewLessonCommand(lessonString);
                 }
             }
-            InitiallizeViewModel(lessonString);
+            InitiallizeViewModel(lessonString, true);
 		}
 
 		/// <summary>
@@ -297,11 +297,13 @@ namespace MultiType.ViewModels
 
 		private void InitiallizeViewModel(string lessonString, bool isReinitialization=false)
 		{
-			// Initiallize data bound properties.
+            // Initiallize data bound properties
+            Console.WriteLine("Initializing PrimaryViewModel with lessonString = {0} -- reinit = {1}", lessonString, isReinitialization);
 			GameComplete = false;
 			gameHasStarted = false;
             _didSetLessonString = false;
             LessonString = lessonString;
+            Console.WriteLine("LessonString initialized to {0}", lessonString);
 			CharactersTyped = "0";
 			Accuracy = "0/0 = 0%";
 			TimeElapsed = "";
