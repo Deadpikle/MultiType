@@ -302,8 +302,9 @@ namespace MultiType.ViewModels
 			GameComplete = false;
 			gameHasStarted = false;
             _didSetLessonString = false;
+            Console.WriteLine("Before LessonString initialized to {0}", LessonString);
             LessonString = lessonString;
-            Console.WriteLine("LessonString initialized to {0}", lessonString);
+            Console.WriteLine("AFter LessonString initialized to {0}", LessonString);
 			CharactersTyped = "0";
 			Accuracy = "0/0 = 0%";
 			TimeElapsed = "";

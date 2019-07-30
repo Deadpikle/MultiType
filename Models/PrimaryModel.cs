@@ -72,16 +72,6 @@ namespace MultiType.Models
 			_lastCharEdit = false;
 			_totalErrors = 0;
 			_previousTypedContent = "";
-            if (_viewModel._lessonInput != null)
-            {/*
-                _viewModel._lessonInput.Dispatcher.Invoke(() =>
-                {
-                    var lessonDocument = _viewModel._lessonInput.Document;
-                    var fullRange = new TextRange(lessonDocument.ContentStart, lessonDocument.ContentEnd);
-                    fullRange.ClearAllProperties();
-                    //fullRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Black);
-                });*/
-            }
             if (!_isMulti)
 			{ // set up the racer for single player games
 				_currentRacerIndex = 0;
@@ -138,7 +128,7 @@ namespace MultiType.Models
 		private void RacerTrigger(object source, ElapsedEventArgs e)
 		{
 			if (_currentRacerIndex >= _lessonLength)
-			{ // stop the racer if we have completed the lesson
+			{ // stop the racer if the racer has completed the lesson
 				_racerTimer.Stop();
 				return;
 			}
@@ -153,7 +143,6 @@ namespace MultiType.Models
 		private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             // calculate elapsed time using milliseconds from the stopwatch
-            Console.WriteLine("On timed event");
 			var milliseconds = _stopwatch.ElapsedMilliseconds;
             var seconds = milliseconds / 1000;
             var minutes = seconds / 60;
@@ -410,7 +399,6 @@ namespace MultiType.Models
 			_viewModel.StaticPopupText = "";
 			_viewModel.PopupCountdown = "";
 			_stopwatch.Start();
-            Console.WriteLine("Started timer");
 			_timer.Start();
 			_viewModel.gameHasStarted = true;
 			_viewModel.RTBReadOnly = false;
@@ -436,7 +424,6 @@ namespace MultiType.Models
 				WPM = _WPM
 			};
 			var packet = Serializer.SerializeToByteArray(StatsSnapshot);
-            Console.WriteLine("Sending stats packet");
             _socket.Write(packet);
 		}
 

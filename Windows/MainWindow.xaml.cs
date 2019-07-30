@@ -128,8 +128,9 @@ namespace MultiType
 					if (window.ShowDialog() == true)
 					{
 						var lessonString = window.LessonString;
-						_viewModel.NewLesson(lessonString); // TODO: here is where you _could_ send lesson title too
-						OpenStartGameDialog();
+						_viewModel.NewLesson(lessonString);
+                        LessonTitle = window.LessonTitle; // ohhh the evil hackssss and ugly codddeeee
+                        OpenStartGameDialog();
 					}
 					else
 					{
@@ -186,7 +187,8 @@ namespace MultiType
 			paragraph.LineHeight = 48;
 			UserInput.Document.Blocks.Add(paragraph);
 			checkbox.IsChecked = false;
-		}
+            _viewModel.PeerTypedContent = "";
+        }
 
         private void UserInput_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {

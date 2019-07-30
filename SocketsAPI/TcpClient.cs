@@ -108,9 +108,8 @@ namespace MultiType.SocketsAPI
 		{
 			if (packet.IsUserStatictics)
 			{ // use the data contained in the stats packet to update the peer databound properties in the view mode
-                Console.WriteLine("Got stats packet");
 				var stats = (UserStatistics)packet;
-                if (!_viewModel.GameComplete)
+                if (!_viewModel.GameComplete && _viewModel.gameHasStarted)
                 {
                     _viewModel.PeerCompletionPercentage = stats.CompletionPercentage;
                     _viewModel.PeerTypedContent = stats.TypedContent;

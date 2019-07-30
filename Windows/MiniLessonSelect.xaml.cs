@@ -11,7 +11,8 @@ namespace MultiType
 	public partial class MiniLessonSelect : MetroWindow
 	{
 		public string LessonString { get; set; }
-		private LessonViewModel _viewModel;
+        public string LessonTitle { get; set; }
+        private LessonViewModel _viewModel;
 
 		public MiniLessonSelect()
 		{
@@ -26,6 +27,7 @@ namespace MultiType
 			if (_viewModel == null) return;
 			if (_viewModel.SelectedLessonIndex.Equals("0")) return;
 			LessonString = _viewModel.LessonString;
+            LessonTitle = _viewModel.LessonNames[int.Parse(_viewModel.SelectedLessonIndex)];
 			DialogResult = true;
 		}
 
