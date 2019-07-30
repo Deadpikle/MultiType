@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MultiType.Models;
 using System.Windows;
 
 namespace MultiType
@@ -25,11 +26,11 @@ namespace MultiType
             UserErrors.Visibility = Visibility.Collapsed;
         }
 
-        public LessonComplete(string wpm, int userErrors)
+        public LessonComplete(LessonCompleteModel lessonComplete)
         {
             InitializeComponent();
-            RateRun.Text = wpm;
-            if (userErrors < 2) // allow one error
+            RateRun.Text = lessonComplete.WPM;
+            if (lessonComplete.DidSucceed) // allow one error
             {
                 Stats.Visibility = Visibility.Visible;
                 UserErrors.Visibility = Visibility.Collapsed;
@@ -38,7 +39,16 @@ namespace MultiType
             {
                 Stats.Visibility = Visibility.Collapsed;
                 UserErrors.Visibility = Visibility.Visible;
-                ErrorsRun.Text = userErrors.ToString();
+                ErrorsRun.Text = lessonComplete.UserErrors.ToString();
+            }
+            if (string.IsNullOrWhiteSpace(lessonComplete.LessonName))
+            {
+                LessonTitle.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                LessonTitle.Text = lessonComplete.LessonName;
+                LessonTitle.Visibility = Visibility.Visible;
             }
         }
 

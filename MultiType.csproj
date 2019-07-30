@@ -69,6 +69,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Exceptions\BadLessonEntryException.cs" />
+    <Compile Include="Models\LessonCompleteModel.cs" />
     <Compile Include="Windows\LessonComplete.xaml.cs">
       <DependentUpon>LessonComplete.xaml</DependentUpon>
     </Compile>

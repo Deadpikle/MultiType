@@ -5,6 +5,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using MahApps.Metro.Controls;
+using MultiType.Models;
 using MultiType.ViewModels;
 
 namespace MultiType
@@ -31,6 +32,7 @@ namespace MultiType
 			this.DataContext = _viewModel;
 			//_contentLength = 0;
 			UserInput.Focus();
+            LessonTitle = "";
         }
 
         internal MainWindow(SocketsAPI.AsyncTcpClient socket, string lessonString, bool isServer = false)
@@ -42,6 +44,8 @@ namespace MultiType
 			ChangeLesson.Visibility = Visibility.Collapsed;
 			_isServer=isServer;			
         }
+
+        public string LessonTitle { get; set; }
 
 		internal void Window_Loaded(object sender, RoutedEventArgs e)
 		{
@@ -102,7 +106,8 @@ namespace MultiType
 			var checkbox = (CheckBox)sender;
 			if (_isSinglePlayer || _isServer)
 			{
-                var completeWindow = new LessonComplete(User1WPM.Content.ToString(), _viewModel.UserErrors);
+                var model = new LessonCompleteModel(User1WPM.Content.ToString(), _viewModel.UserErrors, LessonTitle);
+                var completeWindow = new LessonComplete(model);
 				if (completeWindow.ShowDialog() == false)
 				{
 					completeWindow.Close();

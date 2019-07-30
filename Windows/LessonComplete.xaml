@@ -6,13 +6,15 @@
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         TitleCaps="False" GlowBrush="SkyBlue" Icon="pack://application:,,,/Graphics/icons8-keyboard-64-white.ico">
     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <TextBlock FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Name="LessonTitle">
+        </TextBlock>
         <StackPanel Name="Stats" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
             <TextBlock FontSize="14">
                 You typed at a rate of <Run Name="RateRun" FontWeight="Bold"></Run>
             </TextBlock>
         </StackPanel>
         <StackPanel Name="UserErrors" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
-            <TextBlock FontSize="14">
+            <TextBlock FontSize="14" Foreground="Red">
                 You finished, but you had <Run Name="ErrorsRun" FontWeight="Bold"></Run> error(s)! Please try again!
             </TextBlock>
         </StackPanel>

@@ -51,8 +51,9 @@ namespace MultiType
 			// we don't know what the lesson is yet, so pass an empty string to the view model
 			const string lessonString = "";
 			var window = new MainWindow(_viewModel.asyncSocket, lessonString);
-			window.Show();
-			this.Close();
+            window.LessonTitle = "";
+            window.Show();
+            this.Close();
 		}
 
 		/// <summary>

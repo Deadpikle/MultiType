@@ -50,6 +50,7 @@ namespace MultiType
 				}
 					
 				var window = new MainWindow(_viewModel.LessonString, _viewModel.RacerSpeed);
+                window.LessonTitle = _viewModel.LessonNames[int.Parse(_viewModel.SelectedLessonIndex)];
 				window.Show();
 				this.Close();
 			}
@@ -68,7 +69,8 @@ namespace MultiType
 			// connection has been established, open the primary window, passing in the peer socket
 			this.Visibility = Visibility.Hidden;
 			var window = new MainWindow(_viewModel.asyncClient, _viewModel.LessonString, true);
-			window.Show();
+            window.LessonTitle = _viewModel.LessonNames[int.Parse(_viewModel.SelectedLessonIndex)];
+            window.Show();
 			this.Close();
 		}
 
